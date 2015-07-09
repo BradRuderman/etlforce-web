@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   scope :auth do
     get '/failure', to: 'sessions#omniauth_failure'
-    post '/:provider/callback', to: 'sessions#omniauth_callback'
-    post '/:provider/disconnect', to: 'sessions#omniauth_disconnect'
+    get '/:provider/callback', to: 'sessions#omniauth_callback'
+    get '/:provider/disconnect', to: 'sessions#omniauth_disconnect'
   end
 
   # Example of regular route:
