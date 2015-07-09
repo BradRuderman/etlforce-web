@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def omniauth_callback
     auth = request.env['omniauth.auth']
-    puts(auth)
+    render :json => auth
   end
 
   def omniauth_failure
