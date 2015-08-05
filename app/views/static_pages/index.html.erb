@@ -17,8 +17,12 @@
     <h1>Navbar example</h1>
     <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
     <p>
-      <a class="btn btn-lg btn-primary" href="/auth/salesforce" role="button">Production</a>
-      <a class="btn btn-lg btn-primary" href="/auth/salesforcesandbox" role="button">Sandbox</a>
+      <% if current_user.nil? %>
+        <%= link_to "Production", user_omniauth_authorize_path(:salesforce), class: "btn btn-lg btn-primary" %>
+        <%= link_to "Sandbox", user_omniauth_authorize_path(:salesforcesandbox), class: "btn btn-lg btn-primary" %>
+      <% else %>
+        <%= link_to("Logout", destroy_user_session_path, :method => :delete, class: "btn btn-lg btn-danger") %>
+      <% end %>
     </p>
   </div>
 </div>
